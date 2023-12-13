@@ -1,20 +1,27 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {getAllDoctores} from '../api/doctores'
+import {DoctorCard} from './DoctorCard'
 
 export function DoctoresList() {
+    
+    const [doctores, setDoctores] = useState([])
+    
     const a = async()=> {
         const res = await getAllDoctores();
-        console.log(res.data);
+        const d = setDoctores(res.data);
+        return d
     }
 
-
     useEffect(() => {
-        //function loadDoctores(){
-            a()
-        //}
-        //loadDoctores();
+        a()   
     },[]); 
  
-    return <div>Doctores List</div>
+    return(
+        <div>
+            {doctores.map( (doctor)=>(
+                <DoctorCard key={doctor.id} doctor={doctor}/>
+            ))}
+        </div>
+    );
 }
 
