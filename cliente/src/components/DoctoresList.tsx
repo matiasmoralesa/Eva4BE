@@ -1,14 +1,18 @@
 import { useEffect } from "react"
-import {getAllDoctores} from '../api/doctores.api.js'
+import {getAllDoctores} from '../api/doctores'
 
 export function DoctoresList() {
-    
+    const a = async()=> {
+        const res = await getAllDoctores();
+        console.log(res.data);
+    }
+
+
     useEffect(() => {
-        async function loadDoctores(){
-            const res = await getAllDoctores();
-            console.log(res);
-        }
-        loadDoctores();
+        //function loadDoctores(){
+            a()
+        //}
+        //loadDoctores();
     },[]); 
  
     return <div>Doctores List</div>
