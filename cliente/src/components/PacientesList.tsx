@@ -1,19 +1,26 @@
-import { useEffect } from "react";
-import { getAllPacientes } from "../api/pacientes";
+import { useEffect, useState } from "react"
+import {getAllPacientes} from '../api/pacientes'
+import { PacienteCard} from './PacienteCard'
 
 export function PacientesList() {
+    
+    const [pacientes, setPacientes] = useState([])
+    
     const a = async()=> {
         const res = await getAllPacientes();
-        console.log(res.data);
+        const d = setPacientes(res.data);
+        return d
     }
 
-
     useEffect(() => {
-        //function loadDoctores(){
-            a()
-        //}
-        //loadDoctores();
+        a()   
     },[]); 
  
-    return <div>Pacientes List</div>
+    return(
+        <div>
+            {pacientes.map( (paciente)=>(
+                <PacienteCard key={paciente.id} paciente={paciente}/>
+            ))}
+        </div>
+    );
 }

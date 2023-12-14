@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const PacienteApi = axios.create({
-    baseURL: 'http://localhost:8000/Pacientees/api/v1/Pacientees/'
+    baseURL: 'http://localhost:8000/pacientes/api/v1/pacientes/'
 })
 
 

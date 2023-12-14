@@ -1,19 +1,25 @@
-import { useEffect } from "react";
-import { getAllConsultas } from "../api/consultas";
+import { useEffect, useState } from "react";
+import { getAllConsultas } from '../api/consultas';
+import { ConsultaCard } from './ConsultaCard';
 
 export function ConsultasList() {
+  const [consultas, setConsultas] = useState([])
+    
     const a = async()=> {
         const res = await getAllConsultas();
-        console.log(res.data);
+        const d = setConsultas(res.data);
+        return d
     }
 
-
     useEffect(() => {
-        //function loadDoctores(){
-            a()
-        //}
-        //loadDoctores();
+        a()   
     },[]); 
  
-    return <div>Consultas List</div>
+    return(
+        <div>
+            {consultas.map( (consultas)=>(
+                <ConsultaCard key={consultas.id} consulta={consultas}/>
+            ))}
+        </div>
+    );
 }
