@@ -5,16 +5,12 @@ export function ConsultaCard({ consulta }) {
 
   return (
     <div className="border border-gray-300 rounded p-4 m-4 cursor-pointer" onClick={() => navigate(`/consulta/${consulta.id}`)}>
-      <h1 className="text-xl font-bold">Consulta de {consulta.paciente.nombre}</h1>
+      <h1 className="text-xl font-bold">Consulta de {consulta.paciente_nombre}</h1>
       <table className="w-full mt-2">
         <tbody>
           <tr>
             <td className="p-2 border-b border-gray-300">Doctor:</td>
-            <td className="p-2 border-b border-gray-300">{consulta.doctor && consulta.doctor.nombre}</td>
-          </tr>  
-          <tr>
-            <td className="p-2 border-b border-gray-300">Doctor:</td>
-            <td className="p-2 border-b border-gray-300">{consulta.doctor.nombre}</td>
+            <td className="p-2 border-b border-gray-300">{consulta.doctor_nombre}</td>
           </tr>
           <tr>
             <td className="p-2 border-b border-gray-300">Fecha:</td>
@@ -36,12 +32,13 @@ export function ConsultaCard({ consulta }) {
             <td className="p-2 border-b border-gray-300">Motivo:</td>
             <td className="p-2 border-b border-gray-300">{consulta.motivo}</td>
           </tr>
-          {/* Agrega más filas según los campos adicionales de la consulta */}
         </tbody>
       </table>
     </div>
   );
 }
+
+
 
 
 

@@ -8,6 +8,7 @@ export function ConsultasList() {
     const a = async()=> {
         const res = await getAllConsultas();
         const d = setConsultas(res.data);
+        console.log(d)
         return d
     }
 
